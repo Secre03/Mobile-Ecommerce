@@ -109,7 +109,7 @@ const Index = () => {
             onPress={() => setShowCart(!showCart)}
           >
             <Text>
-              {showCart ? '← Back' : `Cart (${totalQuantity})`}
+              {showCart ? 'Back' : `Cart (${totalQuantity})`}
             </Text>
             
           </Pressable>
