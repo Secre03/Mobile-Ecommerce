@@ -100,7 +100,6 @@ const Index = () => {
       <ScrollView className='flex-1 bg-gray-100'>
       <View className='px-4 pt-14 pb-6'>
 
-        {/* Header */}
         <View className='flex-row justify-between items-center mb-4'>
           <Text className='text-2xl font-bold text-gray-800'>
             {showCart ? 'My Cart' : 'Products'}
@@ -116,7 +115,6 @@ const Index = () => {
           </Pressable>
         </View>
 
-        {/* Products */}
         {!showCart && (
           <View>
             {productList.length === 0 ? (
@@ -135,7 +133,6 @@ const Index = () => {
           </View>
         )}
 
-        {/* Cart */}
         {showCart && (
           <View>
             {cart.length === 0 ? (
@@ -151,7 +148,6 @@ const Index = () => {
                   />
                 ))}
 
-                {/* Total */}
                 <View className='mt-4 p-4 bg-white rounded-2xl shadow'>
                   <View className='flex-row justify-between items-center'>
                     <Text className='text-lg text-gray-600'>Total</Text>
