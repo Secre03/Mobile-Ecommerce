@@ -11,6 +11,7 @@ import { Product, CartItem } from '@/types/products';
 const storage = 'cart'
 
 const Index = () => {
+
   const productList = products
   const [cart, setCart] = useState<CartItem[]>([])
   const [showCart, setShowCart] = useState(false)
@@ -22,14 +23,13 @@ const Index = () => {
         const data = await AsyncStorage.getItem(storage)
         if (data) setCart(JSON.parse(data))
       } catch (err) {
-        console.log('Error loading cart:', err)
+        console.log('error loading cart:', err)
       }
     }
     loadCart()
   }, [])
 
   
-
 
 
   const addToCart = async (item: Product) => {
@@ -100,27 +100,27 @@ const Index = () => {
       <ScrollView className='flex-1 bg-gray-100'>
       <View className='px-4 pt-14 pb-6'>
 
-        <View className='flex-row justify-between items-center mb-4'>
-          <Text className='text-2xl font-bold text-gray-800'>
+        <View>
+          <Text>
             {showCart ? 'My Cart' : 'Products'}
           </Text>
 
           <Pressable
             onPress={() => setShowCart(!showCart)}
-            className='bg-black px-4 py-2 rounded-full'
           >
-            <Text className='text-white font-semibold'>
+            <Text>
               {showCart ? '← Back' : `Cart (${totalQuantity})`}
             </Text>
+            
           </Pressable>
         </View>
 
         {!showCart && (
           <View>
             {productList.length === 0 ? (
-              <Text className='text-gray-500 text-center mt-10'>No products Available</Text>
+              <Text>No products Available</Text>
             ) : (
-              <View className='flex-row flex-wrap'>
+              <View>
                 {productList.map((item: Product) => (
                   <ProductCard
                     key={item.id}
@@ -136,7 +136,7 @@ const Index = () => {
         {showCart && (
           <View>
             {cart.length === 0 ? (
-              <Text className='text-gray-500 text-center mt-10'>Your cart is empty</Text>
+              <Text>Your cart is empty</Text>
             ) : (
               <View>
                 {cart.map((item: CartItem) => (
@@ -148,14 +148,11 @@ const Index = () => {
                   />
                 ))}
 
-                <View className='mt-4 p-4 bg-white rounded-2xl shadow'>
-                  <View className='flex-row justify-between items-center'>
-                    <Text className='text-lg text-gray-600'>Total</Text>
-                    <Text className='text-xl font-bold text-gray-800'>₱{total}</Text>
+                <View>
+                  <View>
+                    <Text>Total</Text>
+                    <Text>₱{total}</Text>
                   </View>
-                  <Pressable className='bg-black mt-4 py-3 rounded-full items-center'>
-                    <Text className='text-white font-bold text-base'>Checkout</Text>
-                  </Pressable>
                 </View>
               </View>
             )}

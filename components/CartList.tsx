@@ -37,29 +37,27 @@ const CartList = ({item, onDecrease, onRemove}: CartListProps) => {
         resizeMode="cover"
       />
 
-      <View className='ml-3 flex-1'>
-        <Text className='text-base font-semibold text-gray-800'>{item.name}</Text>
-        <Text className='text-sm text-gray-500'>₱{item.price}</Text>
-        <Text className='text-sm text-gray-500'>Subtotal: ₱{item.price * item.cartQuantity}</Text>
+      <View>
+        <Text>{item.name}</Text>
+        <Text>₱{item.price}</Text>
+        <Text>Subtotal: ₱{item.price * item.cartQuantity}</Text>
 
         <View className='flex-row items-center mt-2'>
-           <Text className='mx-3 text-base font-semibold'>{item.cartQuantity}</Text>
+           <Text>{item.cartQuantity}</Text>
            
           <Pressable
             onPress={() => onDecrease(item.id)}
-            className='bg-gray-200 w-7 h-7 rounded-full items-center justify-center'
           >
-            <Text className='text-base font-bold'>-</Text>
+            <Text>-</Text>
           </Pressable>
-
-         
 
           
         </View>
 
         <Pressable onPress={confirmRemove} className='mt-2'>
-          <Text className='text-red-500 text-sm'>Remove</Text>
+          <Text>Remove</Text>
         </Pressable>
+
       </View>
     </View>
   )
